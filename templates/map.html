@@ -1,26 +1,21 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script src="../static/js/map.js"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key={{api_key}}&libraries=visualization&callback=initMap">
-    </script>
-  </body>
+<html lang="en">
+<head>
+  <title>The Data Lens Example</title>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <link rel="stylesheet" type="text/css" href="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.css" />
+  <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body>
+    <div class="dl-map"></div>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-clustering.js"></script>
+    <script type="text/javascript" src="https://js.cit.datalens.api.here.com/2.3/mapsjs-datalens.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="../static/js/index.js"></script>
+</body>
 </html>
 
