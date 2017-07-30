@@ -13,7 +13,7 @@ function viewMarkers() {
   if(map!=null){
     markers.forEach( function(e) {
       var new_marker = new H.map.Marker({lat: e.lat, lng: e.long});
-      marker.objs.push(new_marker);
+      marker_objs.push(new_marker);
       map.addObject(new_marker);
       var new_circle = new H.map.Circle(
         {lat:e.lat, lng:e.long},

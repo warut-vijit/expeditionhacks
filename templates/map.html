@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>The Data Lens Example</title>
+  <title>Insight</title>
   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   <link rel="stylesheet" type="text/css" href="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.css" />
   <link rel="stylesheet" type="text/css" href="../static/css/index.css">
@@ -9,21 +9,22 @@
 </head>
 <body>
     <div class="dl-map"></div>
-    <aside class="menu">
+    <aside class="menu" style="margin-left:1.5rem">
+  <h1><b style="margin-left:1.5rem;padding:1.5rem;"></br>[  TRENDSIGHT  ]</br><hr></b></h1>
   <p class="menu-label">
     General
   </p>
   <ul class="menu-list">
-    <li><a>Home</a></li>
-    <li><a>Dataset</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/events">Dataset</a></li>
   </ul>
   <p class="menu-label">
     Events
   </p>
   <ul class="menu-list">
     <li><a>Event Details</a></li>
-    <li><a>View Events</a></li>
-    <li><a>Hide Events</a></li>
+    <li><a onclick="viewMarkers()">View Events</a></li>
+    <li><a onclick="hideMarkers()">Hide Events</a></li>
   </ul>
   <p class="menu-label">
     Variation
@@ -37,8 +38,8 @@
         <li><a>Monthly</a></li>
       </ul>
     </li>
-    <li><a>View Variation</a></li>
-    <li><a>Hide Variation</a></li>
+    <li><a onclick="viewVariations()">View Variation</a></li>
+    <li><a onclick="hideVariations()">Hide Variation</a></li>
   </ul>
 </aside>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
