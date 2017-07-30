@@ -1,14 +1,21 @@
 var markers = [];
+var marker_objs = [];
+var variations = [];
+var variation_objs = [];
 var map = null;
 
 function ingestMarkers(data) {
   console.log('Loaded data');
   markers = data;
+}
+function viewMarkers() {
+  if(marker_objs.length!=0) return;
   if(map!=null){
-    data.forEach( function(e) {
+    markers.forEach( function(e) {
       var new_marker = new H.map.Marker({lat: e.lat, lng: e.long});
+      marker.objs.push(new_marker);
       map.addObject(new_marker);
-      map.addObject(new H.map.Circle(
+      var new_circle = new H.map.Circle(
         {lat:e.lat, lng:e.long},
         e.interest,
         {
@@ -18,12 +25,59 @@ function ingestMarkers(data) {
             fillColor: 'rgba(55, 85, 170, 0.7)'  // Color of the circle
           }
         }
-      ));
+      );
+      marker_objs.push(new_circle);
+      map.addObject(new_circle);
     });
   } else {
     console.log('Failed to load map');
   }
 }
+function hideMarkers() {
+  if(marker_objs.length==0) return;
+  if(map!=null){
+    marker_objs.forEach( function(e) {
+      map.removeObject(e);
+    });
+    marker_objs = [];
+  }
+}
+
+function ingestVariation(data) {
+  console.log('Loaded data');
+  variations = data;
+}
+function viewVariations() {
+  if(variation_objs.length!=0) return;
+  if(map!=null){
+    variations.forEach( function(e) {
+      var boundingBox = new H.geo.Rect(e.min_lat, e.min_long, e.max_lat, e.max_long);
+      if(e.variation!=0){
+      var variation_obj = new H.map.Rect(boundingBox, {
+          style: {
+            fillColor: 'hsla(22, 100%, 60%,'+Math.min(50,e.variation*100)+'%)',
+            strokeColor: '#E8FA75',
+            lineWidth: 0
+          },
+        });
+      variation_objs.push(variation_obj);
+      map.addObject(variation_obj);
+      } // endif
+    });
+  } else {
+    console.log('Failed to load map');
+  }
+}
+function hideVariations() {
+  if(variation_objs.length==0) return;
+  if(map!=null){
+    variation_objs.forEach( function(e) {
+      map.removeObject(e);
+    });
+    variation_objs = [];
+  }
+}
+
 (function () {
 'use strict';
 

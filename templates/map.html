@@ -5,9 +5,42 @@
   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   <link rel="stylesheet" type="text/css" href="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.css" />
   <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
 </head>
 <body>
     <div class="dl-map"></div>
+    <aside class="menu">
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li><a>Home</a></li>
+    <li><a>Dataset</a></li>
+  </ul>
+  <p class="menu-label">
+    Events
+  </p>
+  <ul class="menu-list">
+    <li><a>Event Details</a></li>
+    <li><a>View Events</a></li>
+    <li><a>Hide Events</a></li>
+  </ul>
+  <p class="menu-label">
+    Variation
+  </p>
+  <ul class="menu-list">
+    <li>
+      <a class="is-active">Timescale</a>
+      <ul>
+        <li><a>Hourly</a></li>
+        <li><a>Daily</a></li>
+        <li><a>Monthly</a></li>
+      </ul>
+    </li>
+    <li><a>View Variation</a></li>
+    <li><a>Hide Variation</a></li>
+  </ul>
+</aside>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
     <script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
@@ -17,6 +50,7 @@
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="../static/js/index.js"></script>
     <script type=text/javascript> ingestMarkers({{ markers|tojson|safe }}); </script> 
+    <script type=text/javascript> ingestVariation({{ variations|tojson|safe }}); </script> 
 </body>
 </html>
 
