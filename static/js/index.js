@@ -1,3 +1,29 @@
+var markers = [];
+var map = null;
+
+function ingestMarkers(data) {
+  console.log('Loaded data');
+  markers = data;
+  if(map!=null){
+    data.forEach( function(e) {
+      var new_marker = new H.map.Marker({lat: e.lat, lng: e.long});
+      map.addObject(new_marker);
+      map.addObject(new H.map.Circle(
+        {lat:e.lat, lng:e.long},
+        e.interest,
+        {
+          style: {
+            strokeColor: 'rgba(55, 85, 170, 0.6)', // Color of the perimeter
+            lineWidth: 2,
+            fillColor: 'rgba(55, 85, 170, 0.7)'  // Color of the circle
+          }
+        }
+      ));
+    });
+  } else {
+    console.log('Failed to load map');
+  }
+}
 (function () {
 'use strict';
 
@@ -22,7 +48,7 @@ const layers = platform.createDefaultLayers({
 });
 
 // initialize a map  - not specifying a location will give a whole world view.
-let map = new H.Map(
+map = new H.Map(
     document.getElementsByClassName('dl-map')[0],
     defaultLayers.normal.basenight,
     {
@@ -53,10 +79,10 @@ let provider = new H.datalens.RawDataProvider({
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [Number(row[6]), Number(row[5])]
+                    "coordinates": [Number(row[2]), Number(row[1])]
                 },
                 "properties": {
-                    "passenger_count": 10 //row[3]
+                    "passenger_count": Number(row[3])
                 }
             };
             features.push(feature);

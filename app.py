@@ -1,4 +1,5 @@
 import os
+import logging
 from flask import Flask, jsonify, request, render_template, redirect
 from events import get_events
 
@@ -6,7 +7,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-  return render_template('map.html')
+  event_markers = get_events()
+  return render_template('map.html', markers=event_markers)
 
 @app.route('/events')
 def events():
