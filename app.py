@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-  return render_template('map.html', api_key=open('api.key').read())
+  return render_template('map.html')
 
 @app.route('/events')
 def events():

@@ -42,7 +42,7 @@ window.addEventListener('resize', function() {
 });
 
 let provider = new H.datalens.RawDataProvider({
-    dataUrl: 'http://localhost:5000/static/data/truncated.csv',
+    dataUrl: 'http://localhost:5000/static/data/aggregated.csv',
     dataToFeatures: (data, helpers) => {
         let parsed = helpers.parseCSV(data);
         let features = [];
